@@ -10,8 +10,8 @@ app.use(bodyParser.json());
 
 // In-memory array to store users
 let users = [
-    { id: 1, name: 'John Doe', email: 'john@example.com', phone: '1234567890' },
-    { id: 2, name: 'Jane Doe', email: 'jane@example.com', phone: '0987654321' }
+    { id: 1, name: 'John Doe', email: 'john@example.com', phone: '1234567890', passowrd: '$A123456'},
+    { id: 2, name: 'Jane Doe', email: 'jane@example.com', phone: '0987654321',passowrd: '$B123456'}
 ];
 
 // Get all users
@@ -28,12 +28,13 @@ app.get('/users/:name', (req, res) => {
 
 // Create a new user
 app.post('/users', (req, res) => {
-    const { name, email, phone } = req.body;
+    const { name, email, phone,password } = req.body;
     const user = {
         id: users.length + 1,
         name,
         email,
-        phone
+        phone,
+        password
     };
     users.push(user);
     res.status(201).send(user);
@@ -48,6 +49,7 @@ app.put('/users/:name', (req, res) => {
     user.name = name;
     user.email = email;
     user.phone = phone;
+    user.password = password;
     res.send(user);
 });
 
