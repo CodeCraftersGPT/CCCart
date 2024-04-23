@@ -2,7 +2,7 @@
   "name": "cccart",
   "version": "1.0.0",
   "description": "contains rest api for reactjs demo",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
