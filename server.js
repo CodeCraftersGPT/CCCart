@@ -1,12 +1,11 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const app = express();
 const port = process.env.PORT || 5000;
 
 app.use(cors());
-app.use(bodyParser.json());
+app.use(express.json());
 
 // In-memory array to store users
 let users = [
@@ -21,7 +20,7 @@ app.get('/users', (req, res) => {
 
 // Get a single user by id
 app.get('/users/:name', (req, res) => {
-    const user = users.find(u => u.name === parseInt(req.params.name));
+    const user = users.find(u => u.name === req.params.name);
     if (!user) return res.status(404).send('User not found.');
     res.json(user);
 });
@@ -42,10 +41,10 @@ app.post('/users', (req, res) => {
 
 // Update a user
 app.put('/users/:name', (req, res) => {
-    const user = users.find(u => u.name === parseInt(req.params.name));
+    const user = users.find(u => u.name === req.params.name);
     if (!user) return res.status(404).send('User not found.');
 
-    const { name, email, phone } = req.body;
+    const { name, email, phone,password } = req.body;
     user.name = name;
     user.email = email;
     user.phone = phone;
@@ -55,7 +54,7 @@ app.put('/users/:name', (req, res) => {
 
 // Delete a user
 app.delete('/users/:name', (req, res) => {
-    users = users.filter(u => u.name !== parseInt(req.params.name));
+    users = users.filter(u => u.name !== req.params.name);
     res.status(204).send();
 });
 
