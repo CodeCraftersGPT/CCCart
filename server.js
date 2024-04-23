@@ -10,8 +10,8 @@ app.use(bodyParser.json());
 
 // In-memory array to store users
 let users = [
-    { id: 1, name: 'John Doe', email: 'john@example.com', phone: '1234567890', passowrd: '$A123456'},
-    { id: 2, name: 'Jane Doe', email: 'jane@example.com', phone: '0987654321',passowrd: '$B123456'}
+    { id: 1, name: 'John Doe', email: 'john@example.com', phone: '1234567890', password: '$A123456'},
+    { id: 2, name: 'Jane Doe', email: 'jane@example.com', phone: '0987654321',password: '$B123456'}
 ];
 
 // Get all users
