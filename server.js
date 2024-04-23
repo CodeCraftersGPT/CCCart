@@ -20,8 +20,8 @@ app.get('/users', (req, res) => {
 });
 
 // Get a single user by id
-app.get('/users/:id', (req, res) => {
-    const user = users.find(u => u.id === parseInt(req.params.id));
+app.get('/users/:name', (req, res) => {
+    const user = users.find(u => u.name === parseInt(req.params.name));
     if (!user) return res.status(404).send('User not found.');
     res.json(user);
 });
@@ -40,8 +40,8 @@ app.post('/users', (req, res) => {
 });
 
 // Update a user
-app.put('/users/:id', (req, res) => {
-    const user = users.find(u => u.id === parseInt(req.params.id));
+app.put('/users/:name', (req, res) => {
+    const user = users.find(u => u.name === parseInt(req.params.name));
     if (!user) return res.status(404).send('User not found.');
 
     const { name, email, phone } = req.body;
@@ -52,8 +52,8 @@ app.put('/users/:id', (req, res) => {
 });
 
 // Delete a user
-app.delete('/users/:id', (req, res) => {
-    users = users.filter(u => u.id !== parseInt(req.params.id));
+app.delete('/users/:name', (req, res) => {
+    users = users.filter(u => u.name !== parseInt(req.params.name));
     res.status(204).send();
 });
 
